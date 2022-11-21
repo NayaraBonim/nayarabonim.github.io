@@ -1,0 +1,65 @@
+.introducao {
+  max-width: 1200px;
+  padding: 40px 20px; /*separar o top e baixo desse elemento*/
+  margin: 0 auto; /*para manter todos alinhados*/
+  display: grid;
+  grid-template-columns: 1fr 2fr; /*no design, a imagem pegou 4 colunas e o conteúdo pegou 8. Assim, poderia colocar 4fr 8fr que daria no mesmo*/
+  gap: 100px;
+  align-items: center;
+}
+
+
+
+.introducao h1 {
+  font-size: 4.5rem;
+  line-height: 1.125;
+  margin-bottom: 30px;
+  position: relative; /*para que o position absolute do before funcione tem que colocar no elemento pai o position relative*/
+}
+
+.introducao h1::before {
+  content: ""; /*sempre tem que ter um conteúdo vazio senão não funciona*/
+  display: block;
+  width: 130px;
+  height: 100px;
+  background: url("../img/detalhe.svg") no-repeat center;
+  position: absolute;
+  top: -15px;
+  left: -40px;
+  z-index: -1; /*joga o elemento para trás do texto ou do layout*/
+}
+
+.introducao p {
+  font-size: 1.5rem;
+  color: #525252;
+}
+
+@media (max-width: 1000px) {
+  .introducao h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .introducao {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .introducao h1 {
+    font-size: 2rem;
+  }
+  .introducao h1::before {
+    width: 30px;
+    height: 10px;
+    left: 0px;
+  }
+}
+
+@media (max-width: 400px) {
+  .introducao {
+    grid-template-columns: 1fr;
+  }
+  .introducao img {
+    display: none; /*o elemento some da tela*/
+  }
+}
